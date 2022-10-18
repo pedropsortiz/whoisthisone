@@ -1,0 +1,51 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    {{ teste }}
+
+    <section class="hero is-medium has-text-centered">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div data-aos="zoom-in-up" class="column is-8">
+                        <h1 class="title titled is-1 mb-6">
+                            <span id="typewriter"></span>
+                        </h1>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Find a repository"></div>
+                            <div class="control">
+                                <a class="button is-info">
+                                    Search
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="subtitle subtitled">
+                        {% csrf_token %}
+                        {% if result %}
+                            {{ result.0 }}
+                        {% else %}
+                            bitch
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.13.1/core.min.js"></script>
+<script>
+    new Typewriter('#typewriter', {
+        strings: [
+            'Alan Turing?', 'Albert Einstein?', 'Machado de Assis?', 'Bill Gates?'
+        ],
+        autoStart: true,
+        loop: true
+    });
+</script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({once: true});
+</script>{% endblock %}
