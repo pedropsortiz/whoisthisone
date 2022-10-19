@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    {{ teste }}
+    {% csrf_token %}
 
     <section class="hero is-medium has-text-centered">
         <div class="hero-body">
@@ -10,23 +10,58 @@
                 <div class="columns is-centered">
                     <div data-aos="zoom-in-up" class="column is-8">
                         <h1 class="title titled is-1 mb-6">
-                            <span id="typewriter"></span>
+                            <span class="has-text-primary-light" id="typewriter"></span>
                         </h1>
                         <div class="control">
-                            <input class="input" type="text" placeholder="Find a repository"></div>
-                            <div class="control">
-                                <a class="button is-info">
-                                    Search
-                                </a>
+                            <form action="#" method="POST">
+                                {% csrf_token %}
+                                <input required class="input" type="text" name="personTest" placeholder='Que pessoa é essa?'></div>
+                                <div class="control" style="margin-top: 10px;">
+                                    <button type='submit' class="button is-success">
+                                        Adivinhar!
+                                    </button>
+                                </form>
+                                <button onclick="getTip()" class="button is-warning">Dica</button>
                             </div>
                         </div>
                     </div>
                     <h2 class="subtitle subtitled">
-                        {% csrf_token %}
                         {% if result %}
-                            {{ result.0 }}
-                        {% else %}
-                            bitch
+                            <div id="1" class="has-text-primary-light" style="visibility: visible;">
+                                <div class="container" style="margin-top: 20px;">
+                                    <div class="notification is-dark">
+                                        {{ result.4 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="2" class="has-text-primary-light" style="visibility: hidden;">
+                                <div class="container" style="margin-top: 20px;">
+                                    <div class="notification is-dark">
+                                        {{ result.3 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="3" class="has-text-primary-light" style="visibility: hidden;">
+                                <div class="container" style="margin-top: 20px;">
+                                    <div class="notification is-dark">
+                                        {{ result.2 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="4" class="has-text-primary-light" style="visibility: hidden;">
+                                <div class="container" style="margin-top: 20px;">
+                                    <div class="notification is-dark">
+                                        {{ result.1 }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="5" class="has-text-primary-light" style="visibility: hidden;">
+                                <div class="container" style="margin-top: 20px;">
+                                    <div class="notification is-dark">
+                                        {{ result.0 }}
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
                     </h2>
                 </div>
@@ -44,6 +79,12 @@
         autoStart: true,
         loop: true
     });
+
+    var value = 2
+    function getTip() {
+        document.getElementById(value).style.visibility = "visible";
+        value++;
+    }
 </script>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
