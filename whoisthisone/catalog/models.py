@@ -7,7 +7,7 @@ class Person:
             'Luís Inácio Lula da Silva', 'Jair Bolsonaro',
             'Robert Plant', 'Jack, o Estripador', 'Eminem',
             'Gorillaz', 'Dante Alighieri', 'Leonardo da Vinci',
-            'Elvis Presley',
+            'Elvis Presley', 'AC/DC', 'Led Zeppelin',
             ]
 
     def returnPerson(self):

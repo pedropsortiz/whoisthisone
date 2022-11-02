@@ -14,7 +14,7 @@ def index(request):
     else:
         splitName = search.split(' ')
         try:
-            result = wikipedia.summary(search).replace(search, '[...]').replace(splitName[0], '[...]').replace(splitName.pop(), '[...]').split('. ')
+            result = wikipedia.summary(search).replace(search, '[...]').replace(splitName[0], '[...]').replace(splitName.remove(), '[...]').split('. ')
         except:
             return HttpResponse("Wrong Input")
         return render(request, 'index.html', {"result": result})
